@@ -1,0 +1,206 @@
+body{
+    margin: 0;
+}
+
+header h1{
+    font-size: 45px;
+    margin: 50px;
+    color: rgb(31, 72, 207);
+    text-align: center;
+    margin-bottom: 15px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+}
+
+main{
+    display: grid;
+    grid-template-columns: 300px 400px;
+}
+
+.form{
+    right: auto;
+    left: 200px;
+    margin-left: 125%;
+    width: 300px;
+}
+
+h2{
+    font-size: 23px;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    color: #3049d7;
+}
+
+.form .choix{
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 7px;    
+}
+.form ul{
+    padding: 0;
+    margin: 0;
+}
+.form li{
+    list-style-type: none;
+    border-bottom: 2px solid rgb(223, 223, 223);
+    padding: 11px 2px;
+    display: flex;
+    justify-content: space-between;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-weight: bold;
+    color: rgb(126, 126, 126);
+    font-size: 15px;
+}
+
+.form li:hover{
+    color: #405cf5;
+    background-color: rgb(236, 236, 236);
+}
+
+.form input{
+    margin-right: 20px;
+    width: 2em;
+    height: 1.5em;
+    background-color: white;
+    border-radius: 20%;
+    vertical-align: middle;
+    border: 1px solid #ddd;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.form input:checked{
+    background-color: #5970f1;
+    border: none;
+}
+
+.form label{
+    padding-top: 5px;
+    margin-left: 20px;
+}
+
+.nom input{
+    border: none;
+    margin: 15px;
+    margin-left: 20px;
+    width: 250px;
+    font-size: 16px;
+}
+
+.pizza {
+    margin-left: 125%;
+    width: 300px;
+}
+
+.pizza h2{
+    margin-left: 25%;
+}
+
+.image_principale img{
+    position: absolute;
+    margin-left: 25%;
+    transform: translate(-50%);
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 7px;
+}
+
+.pizza h3.titleCurrentPizza{
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 120px;
+    transform: translate(-50%, -50%);
+    top: 190px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 25px;
+    color: rgb(62, 62, 62);
+}
+
+button {
+  appearance: button;
+  backface-visibility: hidden;
+  background-color: #405cf5;
+  border-radius: 6px;
+  border-width: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+  height: 44px;
+  line-height: 1.15;
+  margin: 12px 0 0;
+  outline: none;
+  overflow: hidden;
+  padding: 0 25px;
+  text-align: center;
+  text-transform: none;
+  transform: translateZ(0);
+  transition: all .2s,box-shadow .08s ease-in;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 40%;
+  margin: 15px;
+  margin-top: 20px;
+}
+
+button:hover{
+    background-color:#576ef0;
+    font-size: 15px;
+}
+
+button:disabled {
+    background-color:#576ef082;
+}
+
+ul.listPizza {
+    width: 430%;
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    /* grid-template-rows: ; */
+    gap: 80px;
+    margin-top: 50px;
+    margin-left: 125%;
+}
+
+ul.listPizza .info {
+    margin-top: 180px;
+}
+
+ul.listPizza li.pizza{
+    list-style-type: none;
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 7px;
+    padding-bottom: 100px;
+    padding-top: 30px;
+    width: 20%px;
+    margin-left: 0;
+    padding-bottom: 0;
+}
+
+.image_secondaire img{
+    position: absolute;
+    transform: translate(0%, -100px);
+    width: 300px;
+    margin-top: 20px;
+}
+
+.listPizza h3{
+    text-align: center;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 18px;
+    color: rgb(62, 62, 62);
+}
+
+.listPizza .info ul{
+    list-style-type: none;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    color: rgb(53, 53, 53);
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 40px;
+}
+
+.listPizza .info li{
+    margin: 10px;
+}
