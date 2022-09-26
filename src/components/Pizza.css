@@ -13,7 +13,7 @@ header h1{
 
 main{
     display: grid;
-    grid-template-columns: 300px 400px;
+    grid-template-columns: 20% 20%;
 }
 
 .form{
@@ -39,6 +39,29 @@ h2{
     padding: 0;
     margin: 0;
 }
+.form .choixNom{
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 7px;   
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.form h3 {
+    color: rgb(31, 31, 31);
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    margin-top: 40px;
+}
+
+.choixNom .Input{
+    padding: 11px 2px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    width: 250px;
+    margin-left: 20px;
+    border: none;
+}
+
 .form li{
     list-style-type: none;
     border-bottom: 2px solid rgb(223, 223, 223);
@@ -100,9 +123,15 @@ h2{
 .image_principale img{
     position: absolute;
     margin-left: 25%;
-    transform: translate(-50%);
+    transform: translate(-50%, 25%);
     border: 2px solid rgb(223, 223, 223);
     border-radius: 7px;
+}
+
+.pizzaTitre{
+    position: absolute;
+    margin-left: 25%;
+    transform: translate(-700%);
 }
 
 .pizza h3.titleCurrentPizza{
@@ -154,13 +183,10 @@ button:disabled {
 }
 
 ul.listPizza {
-    width: 430%;
     display: grid;
-    grid-template-columns: 300px 300px 300px;
-    /* grid-template-rows: ; */
-    gap: 80px;
-    margin-top: 50px;
-    margin-left: 125%;
+    grid-template-columns: 200px 200px 200px;
+    gap: 10%;
+    justify-content: center;
 }
 
 ul.listPizza .info {
@@ -170,26 +196,26 @@ ul.listPizza .info {
 ul.listPizza li.pizza{
     list-style-type: none;
     border: 2px solid rgb(223, 223, 223);
-    border-radius: 7px;
-    padding-bottom: 100px;
-    padding-top: 30px;
-    width: 20%px;
     margin-left: 0;
-    padding-bottom: 0;
+    padding-bottom: 220px;
 }
 
 .image_secondaire img{
     position: absolute;
-    transform: translate(0%, -100px);
     width: 300px;
-    margin-top: 20px;
+    margin-top: -60px;
 }
 
 .listPizza h3{
     text-align: center;
     font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
     font-size: 18px;
+    margin-top: 50px;
     color: rgb(62, 62, 62);
+}
+
+.listPizza a {
+    text-decoration: none;
 }
 
 .listPizza .info ul{
@@ -203,4 +229,92 @@ ul.listPizza li.pizza{
 
 .listPizza .info li{
     margin: 10px;
+}
+
+.login {
+    margin-top: 200px;
+    border: 3px solid rgb(223, 223, 223);
+    border-radius: 15px;    
+    padding: 50px;
+    padding-bottom: 70px;
+    width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login h1{
+    display: block;
+    display: flex;
+    justify-content: center;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    margin-bottom: 40px;
+}
+
+.login div{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.login label{
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    margin: 1em;
+    margin-top: 1.08em;
+    font-weight: 600;
+}
+
+.login input{
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.login button{
+    display: block;
+    margin: auto;
+    width: 400px
+}
+
+h1.titreListe {
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-weight: 500;
+    margin: 1.5em;
+}
+
+div.image_principale_infos img{
+    position: absolute;
+    margin-left: 52%;
+}
+
+div.image_principale_infos img{
+    border: 2px solid rgb(223, 223, 223);
+    border-radius: 7px;
+}
+
+div.pizza_principale{
+    margin-bottom: 430px;
+}
+
+div.pizza_principale .info{
+    text-align: center;
+    margin-right: 52%;
+    margin-left: auto;
+    width: 400px;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    padding-top: 0.3em;
+    height: 200px;
+}
+div.pizza_principale .info li{
+    list-style-type: none;
+    font-size: 25px;
+    margin: 8px;
+}
+
+div.pizza_principale h2{
+    font-size: 50px;
+    font-weight: 500;
+    margin-left: 0.8em;
 }

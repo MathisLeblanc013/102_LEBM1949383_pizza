@@ -1,56 +1,27 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Pizza.css';
-import Tuile from "./Tuile.js"
 
-function Pizza() {
+function Pizza({setListePizza}) {
 
   const [nom, setNom] = useState("");
 
   const [ingredients, setIngredients] = useState([
     {nom: "sauce tomate", actif: false, url:"img/sauce_tomate.png"},
     {nom: "fromage", actif: false, url:"img/fromage.png"},
-    {nom: "pepperonis", actif: false, url:"img/pepperoni.png"},
+    {nom: "pepperoni", actif: false, url:"img/pepperoni.png"},
     {nom: "piments", actif: false, url:"img/piment.png"},
     {nom: "épinards", actif: false, url:"img/epinard.png"},
     {nom: "champignons", actif: false, url:"img/champignons.png"},
     {nom: "ananas", actif: false, url:"img/ananas.png"},
-    {nom: "ognions", actif: false, url:"img/ognion.png"},
+    {nom: "oignons", actif: false, url:"img/ognion.png"},
     {nom: "olives", actif: false, url:"img/olives.png"},
     {nom: "grenouille", actif: false, url:"img/grenouille.png"},
   ]);
 
-  const [listPizza, setlistPizza] = useState([
-      {
-        nom: "Pizza Frog",
-        ingredients:[
-          {nom: "sauce tomate", url:"img/sauce_tomate.png"},
-          {nom: "fromage", url:"img/fromage.png"},
-          {nom: "pepperonis", url:"img/pepperoni.png"},
-          {nom: "olives", url:"img/olives.png"},
-          {nom: "grenouille", url:"img/grenouille.png"},
-        ]
-      },
-      {
-        nom: "Crimes Against Humanity",
-        ingredients:[
-          {nom: "sauce tomate", url:"img/sauce_tomate.png"},
-          {nom: "ananas", url:"img/ananas.png"},
-        ]
-      },
-      {
-        nom: "Mat",
-        ingredients:[
-          {nom: "sauce tomate", url:"img/sauce_tomate.png"},
-          {nom: "fromage", url:"img/fromage.png"},
-          {nom: "pepperonis", url:"img/pepperoni.png"},
-          {nom: "champignons", url:"img/champignons.png"},
-          {nom: "ognions", url:"img/ognion.png"},
-          {nom: "olives", url:"img/olives.png"},
-        ]
-      }
-    ]);
-
-
+  const navigate = useNavigate();
+  
   const enregistrer = () => {
     const pizza = {
       nom: nom,
@@ -62,12 +33,13 @@ function Pizza() {
         pizza.ingredients.push({nom: ingredient.nom, url:ingredient.url});
       }
     });
-    console.log(pizza);
-    setlistPizza(previous => ([pizza, ...previous]))
-
+    setListePizza(previous => ([pizza, ...previous]))
+    annuler();
+    navigate(`/pizza`); //La pizza créée sera toujours la première
   };
 
   const annuler = () => {
+    console.log("fewf");
     setIngredients(previous => previous.map((ingredAModifier) => {
       return {
         ...ingredAModifier,
@@ -80,11 +52,12 @@ function Pizza() {
   return (
     <>
       <header>
-        <h1>Création de pizza</h1>
+        <h1>Créations pizza</h1>
       </header>
       <main>
         <div className="form">
           <h2>Paramètres</h2>
+          <h3>Ingrédients</h3>
           <div className='choix'>
             <ul>
               {ingredients.map((ingredient, i)=>(
@@ -100,9 +73,10 @@ function Pizza() {
                 </li>
               ))}
             </ul>
-            <div className="nom">
-              <input data-testid='nom' onChange={(e)=> setNom(e.target.value)} value={nom} type="text" className="Input" placeholder="Nom de la pizza..."/>
-            </div>
+          </div>
+          <h3>Nom</h3>
+          <div className="choixNom">
+            <input data-testid='nom' onChange={(e)=> setNom(e.target.value)} value={nom} type="text" className="Input" placeholder="Nom de la pizza..."/>
           </div>
           <div>
             <button data-testid='bouton_sauvegarde' onClick={enregistrer} disabled={(
@@ -122,20 +96,15 @@ function Pizza() {
           </div>
         </div>
         <div className='pizza'>
-          <h2>Pizza</h2>
+          <h2 className='pizzaTitre'>Pizza</h2>
           <div className='image_principale'>
-            <img src="img/pain.png" alt="pain"/>
+            <img src="/img/pain.png" alt="pain"/>
             {ingredients.map((ingredient, i)=>(
-                  <img key={ingredient.nom} src={ingredient.url} alt={ingredient.nom} hidden={!ingredient.actif}/>
+                  <img key={ingredient.nom} src={`/${ingredient.url}`} alt={ingredient.nom} hidden={!ingredient.actif}/>
             ))}
             <h3 className='titleCurrentPizza'>{nom}</h3>
           </div>
         </div>
-        <ul className='listPizza'>
-          {listPizza.map((pizza, i)=>(
-            <Tuile pizza={pizza} index={i}/>
-          ))}
-        </ul>
       </main>
     </>
   );
