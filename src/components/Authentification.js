@@ -12,11 +12,6 @@ function Authentification({estIdentifier, setEstIdentifier, setNom})
         )
     }
 
-    const authentifier = () => {
-        setEstIdentifier(true);
-        setNom(nomUtilisateur);
-    }
-
     return (
         <div className='login'>
             <h1>Se Connecter</h1>
@@ -24,7 +19,7 @@ function Authentification({estIdentifier, setEstIdentifier, setNom})
                 <label>Nom d'usager</label>
                 <input data-testid='nom' onChange={(e)=> setNomUtilisateur(e.target.value)} value={nomUtilisateur} type="text" className="Input" placeholder="Nom"/>
             </div>
-            <button onClick={authentifier} disabled={(
+            <button onClick={(e) => setEstIdentifier(true)} disabled={(
                 nomUtilisateur.trim() === ""
             )}>
                 Login

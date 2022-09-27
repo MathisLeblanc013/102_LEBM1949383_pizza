@@ -1,3 +1,4 @@
+import PizzaImage from "./PizzaImage.js"
 import {Link} from 'react-router-dom';
 
 const Tuile = ({pizza, index}) => (
@@ -5,18 +6,8 @@ const Tuile = ({pizza, index}) => (
         <Link to={`/pizza/${index + 1}`}>
             <h3>{pizza.nom}</h3>
             <div className='image_secondaire'>
-            <img src="/img/pain.png" alt="pain"/>
-            {pizza.ingredients.map((ingredient, i)=>(
-                <img key={ingredient.nom} src={`/${ingredient.url}`} alt={ingredient.nom}/>
-                ))}
+                <PizzaImage pizza={pizza}/>
             </div>
-            {/* <div className='info'>
-                <ul>
-                    {pizza.ingredients.map((ingredient, i)=>(
-                        <li key={ingredient.nom}>{ingredient.nom}</li>
-                    ))}
-                </ul>
-            </div> */}
         </Link>
     </li>
 );

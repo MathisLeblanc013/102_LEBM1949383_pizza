@@ -10,17 +10,14 @@ const ListePizza = ({listePizza}) => (
         </div>
         <ul className='listPizza'>
             {listePizza.map((pizza, i)=>(
-                <Tuile pizza={pizza} index={i}/>
+                <Tuile key={pizza.name + pizza.ingredients} pizza={pizza} index={i}/>
             ))}
-            <li className='pizza'>
-                <Link to={'/pizza/creer'}>
-                    <h3>Créer une nouvelle pizza</h3>
-                    <div className='image_secondaire'>
-                        <img src="/img/pizza_+.png" alt="pain"/>
-                    </div>
-                </Link>
-            </li>
         </ul>
+        <div className='centrer'>
+            <Link className='pizzaCreerBtn' to={'/pizza/creer'}>
+                    Créer une nouvelle pizza +
+            </Link>
+        </div>
     </>
 )
 

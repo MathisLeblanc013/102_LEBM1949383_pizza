@@ -184,13 +184,14 @@ button:disabled {
 
 ul.listPizza {
     display: grid;
-    grid-template-columns: 200px 200px 200px;
-    gap: 10%;
+    grid-template-columns: 300px 300px 300px;
+    gap: 5%;
     justify-content: center;
+    padding-left: 0;
 }
 
 ul.listPizza .info {
-    margin-top: 180px;
+    margin-top: 180px; 
 }
 
 ul.listPizza li.pizza{
@@ -198,6 +199,7 @@ ul.listPizza li.pizza{
     border: 2px solid rgb(223, 223, 223);
     margin-left: 0;
     padding-bottom: 220px;
+    margin-bottom: 50px;
 }
 
 .image_secondaire img{
@@ -280,8 +282,9 @@ h1.titreListe {
     justify-content: center;
     margin-top: 75px;
     font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
-    font-weight: 500;
+    font-weight: 800;
     margin: 1.5em;
+    text-align: center;
 }
 
 div.image_principale_infos img{
@@ -317,4 +320,50 @@ div.pizza_principale h2{
     font-size: 50px;
     font-weight: 500;
     margin-left: 0.8em;
+}
+
+
+.pizzaCreerBtn {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family:-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    height: 44px;
+    line-height: 1.15;
+    outline: none;
+    overflow: hidden;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 800px;
+    height: 100px;
+    margin: 90px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.centrer{
+    display: flex;
+    justify-content: center;
+}
+
+.pizzaCreerBtn:hover{
+    background-color:#576ef0;
+    font-size: 23px;
+}
+
+.pizzaCreerBtn:disabled {
+    background-color:#576ef082;
 }

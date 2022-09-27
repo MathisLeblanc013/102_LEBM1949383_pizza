@@ -9,7 +9,7 @@ const App = props => {
 
   const [estIdentifier, setEstIdentifier] = useState();
 
-  const [nom, setNom] = useState();
+  const [nomUtilisateur, setNomUtilisateur] = useState();
 
   const [listePizza, setListePizza] = useState([
     {
@@ -45,7 +45,7 @@ const App = props => {
   const routes = [
     {
       path: "/login",
-      element: <Authentification estIdentifier={estIdentifier} setEstIdentifier={setEstIdentifier} setNom={setNom}/>,
+      element: <Authentification estIdentifier={estIdentifier} setEstIdentifier={setEstIdentifier} nomUtilisateur={nomUtilisateur} setNomUtilisateur={setNomUtilisateur}/>,
     },{
       path: "/pizza",
       element: <ListePizza listePizza={listePizza}/>,
