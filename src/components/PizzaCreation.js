@@ -2,23 +2,26 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './Pizza.css';
+import Nav from "./Nav.js"
 
-function Pizza({setListePizza}) {
+function Pizza({calculerPrixPanier, calculerPrixPizza, setListeCommandes, setListePizza, setPanier, panier, panierOuvert, setPanierOuvert}) {
 
   const [nom, setNom] = useState("");
 
   const [ingredients, setIngredients] = useState([
-    {nom: "sauce tomate", actif: false, url:"img/sauce_tomate.png"},
-    {nom: "fromage", actif: false, url:"img/fromage.png"},
-    {nom: "pepperoni", actif: false, url:"img/pepperoni.png"},
-    {nom: "piments", actif: false, url:"img/piment.png"},
-    {nom: "épinards", actif: false, url:"img/epinard.png"},
-    {nom: "champignons", actif: false, url:"img/champignons.png"},
-    {nom: "ananas", actif: false, url:"img/ananas.png"},
-    {nom: "oignons", actif: false, url:"img/ognion.png"},
-    {nom: "olives", actif: false, url:"img/olives.png"},
-    {nom: "grenouille", actif: false, url:"img/grenouille.png"},
+    {nom: "sauce tomate", actif: false, url:"img/sauce_tomate.png", prix: 2},
+    {nom: "fromage", actif: false, url:"img/fromage.png", prix: 4},
+    {nom: "pepperoni", actif: false, url:"img/pepperoni.png", prix: 6},
+    {nom: "piments", actif: false, url:"img/piment.png", prix: 4},
+    {nom: "épinards", actif: false, url:"img/epinard.png", prix: 3},
+    {nom: "champignons", actif: false, url:"img/champignons.png", prix: 4},
+    {nom: "ananas", actif: false, url:"img/ananas.png", prix: 5},
+    {nom: "oignons", actif: false, url:"img/ognion.png", prix: 4},
+    {nom: "olives", actif: false, url:"img/olives.png", prix: 2},
+    {nom: "grenouille", actif: false, url:"img/grenouille.png", prix: 35},
   ]);
+
+  const [prixPizza, setPrixPizza] = useState(10);
 
   const navigate = useNavigate();
   
@@ -30,16 +33,16 @@ function Pizza({setListePizza}) {
 
     ingredients.map((ingredient) => {
       if(ingredient.actif === true){
-        pizza.ingredients.push({nom: ingredient.nom, url:ingredient.url});
+        pizza.ingredients.push({nom: ingredient.nom, url:ingredient.url, prix:ingredient.prix});
       }
     });
+
     setListePizza(previous => ([pizza, ...previous]))
     annuler();
     navigate(`/pizza`); //La pizza créée sera toujours la première
   };
 
   const annuler = () => {
-    console.log("fewf");
     setIngredients(previous => previous.map((ingredAModifier) => {
       return {
         ...ingredAModifier,
@@ -49,10 +52,31 @@ function Pizza({setListePizza}) {
     setNom("");
   };
 
+  const ingredientOnChange = (i) => {
+    setIngredients(previous => previous.map((ingredAModifier, index) => {
+      return index !== i ? ingredAModifier : {
+        ...ingredAModifier,
+        actif: ! ingredAModifier.actif
+      }}));
+  }
+
+  const calculerPrixIngredientsActif = (ingredients) => {
+    let prixPizza = 10;
+    ingredients.map((ingred) => {
+      if(ingred.actif) {
+        prixPizza += ingred.prix;
+      }
+    });
+    return(
+      prixPizza
+    );
+  }
+
   return (
     <>
+      <Nav calculerPrixPanier={calculerPrixPanier} calculerPrixPizza={calculerPrixPizza} setListeCommandes={setListeCommandes} isOnPizzaCreate={true} setPanier={setPanier} panier={panier} panierOuvert={panierOuvert} setPanierOuvert={setPanierOuvert}/>
       <header>
-        <h1>Créations pizza</h1>
+        <h1>Création pizza</h1>
       </header>
       <main>
         <div className="form">
@@ -62,24 +86,23 @@ function Pizza({setListePizza}) {
             <ul>
               {ingredients.map((ingredient, i)=>(
                 <li key={ingredient.nom}>
-                  <label className="ingredient" htmlFor={ingredient.nom}>{ingredient.nom}</label>
-                  <input onChange={(e)=> setIngredients(previous => previous.map((ingredAModifier) => {
-                    return ingredAModifier.nom !== ingredient.nom ? ingredAModifier : {
-                      ...ingredAModifier,
-                      actif: !ingredient.actif
-                    }
-                  }
-                  ))} data-testid='check_box' checked={ingredient.actif} value={ingredient.actif} type="checkbox" name={ingredient.nom} id={i} />
+                  <div className='infosIngredient'>
+                    <label className="ingredient" htmlFor={ingredient.nom}>{ingredient.nom}</label>
+                    <p>+ {ingredient.prix}.00$</p>
+                  </div>
+                  <input onInput={(e)=>setPrixPizza(calculerPrixIngredientsActif(ingredients))} onChange={(e)=>ingredientOnChange(i)} data-testid='check_box' checked={ingredient.actif} value={ingredient.actif} type="checkbox" name={ingredient.nom} id={i} />
                 </li>
               ))}
             </ul>
           </div>
+          <h3>Prix:</h3>
+          <p className='prixCreation'>{prixPizza}.00$</p>
           <h3>Nom</h3>
           <div className="choixNom">
             <input data-testid='nom' onChange={(e)=> setNom(e.target.value)} value={nom} type="text" className="Input" placeholder="Nom de la pizza..."/>
           </div>
           <div>
-            <button data-testid='bouton_sauvegarde' onClick={enregistrer} disabled={(
+            <button className="btn" data-testid='bouton_sauvegarde' onClick={enregistrer} disabled={(
               ingredients[0].actif === false &&
               ingredients[1].actif === false &&
               ingredients[2].actif === false &&
@@ -92,7 +115,7 @@ function Pizza({setListePizza}) {
               ingredients[9].actif === false ||
               nom.trim() === ""
               )} >Enregistrer</button>
-            <button data-testid='bouton_reinitialise' onClick={annuler}>Annuler</button>
+            <button className="btn" data-testid='bouton_reinitialise' onClick={annuler}>Annuler</button>
           </div>
         </div>
         <div className='pizza'>

@@ -1,6 +1,5 @@
 import {Navigate} from 'react-router-dom';
 import { useState } from 'react';
-import './Authentification.css';
 
 function Authentification({estIdentifier, setEstIdentifier, setNom})
 {
@@ -19,8 +18,8 @@ function Authentification({estIdentifier, setEstIdentifier, setNom})
                 <label>Nom d'usager</label>
                 <input data-testid='nom' onChange={(e)=> setNomUtilisateur(e.target.value)} value={nomUtilisateur} type="text" className="Input" placeholder="Nom"/>
             </div>
-            <button onClick={(e) => setEstIdentifier(true)} disabled={(
-                nomUtilisateur.trim() === ""
+            <button className="btn" onClick={(e) => setEstIdentifier(true)} disabled={(
+                nomUtilisateur.trim() === "" || !isNaN(nomUtilisateur)
             )}>
                 Login
             </button>
